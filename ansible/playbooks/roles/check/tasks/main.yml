@@ -1,0 +1,7 @@
+---
+- name: Check home directory
+  command:  ls -ltr {{ admin_home }}
+  register: out
+
+- name: Check output home directory
+  debug: var=out.stdout_lines

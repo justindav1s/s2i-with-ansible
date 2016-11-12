@@ -1,0 +1,10 @@
+---
+- name: Copy webapp into place
+  copy: remote_src=True src="{{ src_root }}/{{ webapps_dir }}/{{ webapp_name }} dest={{ webapp_deploy_dir }}
+
+- name: Check {{ webapp_deploy_dir }} directory
+  command:  ls -ltr {{ webapp_deploy_dir }}
+  register: out
+
+- name: Check output home directory
+  debug: var=out.stdout_lines

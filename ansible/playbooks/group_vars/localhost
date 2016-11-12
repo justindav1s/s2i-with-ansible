@@ -1,1 +1,4 @@
 admin_home: /ib/appl
+webapps_dir: webapps
+webapp_name: s2itest
+webapp_deploy_dir: "{{admin_home }}/tomcat7/{{ webapps_dir }}""

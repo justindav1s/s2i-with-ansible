@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export ANSIBLE_ROOT=/tmp/src/ansible
+SRC_ROOT=/tmp/src
+ANSIBLE_ROOT=$SRC_ROOT/ansible
 
 echo This is deploy.sh
 
@@ -10,4 +11,6 @@ echo `pwd`
 
 ansible localhost -m shell -a 'uname -a'
 
-ansible-playbook -vv ${ANSIBLE_ROOT}/playbooks/check.yml
+ansible-playbook -vv \
+    --extra-vars "src_root=${SRC_ROOT} ansible_root=${ANSIBLE_ROOT}" \
+    ${ANSIBLE_ROOT}/playbooks/deploy-webapp.yml
